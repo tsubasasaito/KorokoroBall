@@ -2,15 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private int coinCount;
+    public Text textComponent;
+    
+    private void Start()
     {
-        
+        Screen.SetResolution(1920, 1080, false);
+        Application.targetFrameRate = 60;
+        coinCount = 0;
     }
-
     // Update is called once per frame
     void Update()
     {
@@ -24,5 +28,11 @@ public class GameManager : MonoBehaviour
     {
         string activeSceneName = SceneManager.GetActiveScene().name;
         SceneManager.LoadScene(activeSceneName);
+    }
+    public void AddCoinCount()
+    {
+        coinCount = coinCount + 1;
+        Debug.Log("CoinCount:" + coinCount);
+        textComponent.text = "coinCount : " + coinCount;
     }
 }
